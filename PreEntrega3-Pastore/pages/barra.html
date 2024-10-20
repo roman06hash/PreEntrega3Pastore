@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./images/Beer Emoji.png" type="image.png">
+    <link rel="icon" href="../images/Beer Emoji.png" type="image.png">
     <title>PastoreBAR - Juego Bar interactivo online</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
@@ -17,19 +17,30 @@
     </header>
     <main>
         <section>
-            <div class="container">
+            <div class="container_barra">
                 <div class="content">
-                    <img src="./images/waiter-with-beer-bottles-tray-saluting.png" alt="barman" class="barman_saludo">
-                    <p class="lorem">
-                        Hola! Bienvenido a PastoreBAR. Soy Bruno, tu barman virtual de confianza. <br>
-                        Estoy aquí para guiarte y asegurarme de que disfrutes de una buena experiencia por el bar.
-                        <br> Cuando estés listo, hacé click en el botón comenzar. 👇
-                    </p>
-                </div>
-                <a href="./pages/entrada.html">
-                    <button class="btn_start">Comenzar</button>
-                </a>
-            </div>
+                    <img src="../images/luxury-waiter-with-champagne.png" alt="barman" class="barman_barra">
+
+                    <section class="tragoss">
+                        <p class="lorem_barra">
+                            Bienvenido a la barra. Elige tus tragos favoritos y disfruta pagándolos con tu saldo disponible.
+                                                </p>
+    
+                        <article id="lista">
+                            <h3>Tragos disponibles:</h3>
+                        </article>
+    
+                        <article id="carrito">
+                        </article>
+                    </section>
+<div class="btns_barra">
+    <p class="p_barra">Saldo de (Nombre): <br> $(Saldo)</p>
+    <button class="btn_barra1">Pagar</button>
+
+    <a href="../pages/entrada.html">
+        <button class="btn_barra2">Salir de la barra</button>
+</div>
+
         </section>
 
     </main>
@@ -39,7 +50,7 @@
                 <div class="box">
                     <figure>
                         <a href="index.html">
-                            <img src="./images/Beer Emoji.png" alt="beer_emoji" class="img_beer">
+                            <img src="../images/Beer Emoji.png" alt="beer_emoji" class="img_beer">
                         </a>
                     </figure>
                 </div>
@@ -50,6 +61,11 @@
                 </div>
             </div>
         </footer>
-    <script src="./files.js/main.js"></script>
+    <script src="../files.js/main.js"></script>
+    <script src="../files.js/entrada.js"></script>
+    <script src="../files.js/entrada2.js"></script>
+    <script src="../files.js/welcome.js"></script>
+    <script src="../files.js/barra.js"></script>
+
 </body>
 </html>

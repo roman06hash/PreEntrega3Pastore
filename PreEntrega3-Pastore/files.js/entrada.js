@@ -1,4 +1,4 @@
-let p = document.querySelector(".lorem_entrada2");
+let p = document.querySelector(".lorem_entrada2")
 
 window.addEventListener("DOMContentLoaded", () => {
     let nombre = sessionStorage.getItem("nombre")

@@ -56,7 +56,6 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
     margin: 0px 50px 0px 50px;
 }
 
@@ -204,7 +203,27 @@ margin-top: 150px;
     box-shadow: 0px 20px 40px black;
 }
 
-/* FOOTER */
+.btn_go{
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 9px 9px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+    margin-left: 150px;
+    margin-top: 20px;
+    margin-bottom: 120px;
+}
+
+.btn_go:hover{
+    border: 2px solid orange;
+    background-color: black;
+    transform: translateY(-7px);
+    box-shadow: 0px 20px 40px black;
+}
 
 .footer {
     width: 100%;
@@ -244,4 +263,123 @@ background-color: black;
 .p1{
     font-size: 14px;
 }
+
+.container_barra {
+    background-color: rgba(126, 126, 126, 0.534);
+    border-radius: 30px;
+    margin: 90px auto;
+    max-width: 1300px;
+    height: 550px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.content {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.tragoss{
+    display: flex;
+    flex-direction: column;
+}
+
+.barman_barra {
+    display: flex;
+    align-items: flex-start;
+    width: 25%;
+    mask-image: linear-gradient(black 70%,
+    transparent);
+    margin-right: 40px;
+}
+
+.lorem_barra {
+    font-family: Verdana, Tahoma, sans-serif;
+    color: white;
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: left;
+}
+
+#lista, 
+#carrito {
+    border: 2px solid red;
+    width: 500px;
+    height: auto;
+    padding: 28px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+
+}
+
+#carrito {
+    border-color: green;
+    color: green;
+}
+
+.btn_barra1 {
+    width: 150px;
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 1rem 2rem;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+}
+
+.btn_barra1:hover{
+    border: 2px solid orange;
+    background-color: black;
+    transform: translateY(-7px);
+    box-shadow: 0px 20px 40px black;
+}
+
+.btn_barra2 {
+    width: 150px;
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    margin: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+}
+
+.btn_barra2:hover{
+    border: 2px solid orange;
+    background-color: black;
+    transform: translateY(-7px);
+    box-shadow: 0px 20px 40px black;
+}
+
+.btns_barra{
+    margin-left: 90px;
+    margin-top: 120px;
+}
+
+.p_barra{
+    color: white;
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+#lista{
+    color: red;
+}
+
+   
+
+
+
 

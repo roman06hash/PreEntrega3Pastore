@@ -1,22 +1,32 @@
 let saldo_usuario = ""
-let input = document.querySelector("#name3")
+let input_saldo = document.querySelector("#name3")
 
-input.addEventListener("change", (e) => {
-    saldo_usuario = Number(e.target.value);
-    sessionStorage.setItem("saldo", saldo_usuario);
-});
+input_saldo.addEventListener("change", (e) => {
+    saldo_usuario = Number(e.target.value)
+    sessionStorage.setItem("saldo", saldo_usuario)
+})
 
-let formulario = document.querySelector(".formula2");
+let formulario = document.querySelector(".formula2")
+
+let mensaje_saldo = document.createElement("p")
+mensaje_saldo.textContent = "Intente de nuevo, Introduzca cuanto dinero porta, por favor."
+mensaje_saldo.style.color = "red"
+mensaje_saldo.style.display = "none"
+document.querySelector(".formula2").appendChild(mensaje_saldo);
+
+let mensaje_mostrado = false
 
 formulario.addEventListener("submit", (e) => {
-    e.preventDefault();
-    while (isNaN(saldo_usuario)) {
-        saldo_usuario = Number(prompt("Intente de nuevo, introduzca un valor numerico válido:"));
-        if (!isNaN(saldo_usuario)) {
-            sessionStorage.setItem("saldo", saldo_usuario);
-            window.location.href = "./barra.html";
-            break 
-        }
+    e.preventDefault()
+
+    if (isNaN(saldo_usuario)){
+        mensaje_saldo.style.display = "block"
+        mensaje_mostrado = true
+
+    }else{
+        sessionStorage.setItem("saldo", saldo_usuario)
+        mensaje_saldo.style.display = "none"
+        window.location.href = "./invite.html"
     }
 })
 
