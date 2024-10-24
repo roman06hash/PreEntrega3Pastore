@@ -1,8 +1,10 @@
+
+
 class Trago {
     constructor(nombre, precio) {
-        this.nombre = nombre
-        this.precio = precio
-        this.cantidad = 0
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = 0;
     }
 }
 
@@ -14,72 +16,88 @@ let lista = [
     new Trago("Botella de Agua", 1800),
 ];
 
-let saldoDisplay = document.querySelector(".p_barra")
+let saldo_usuario = parseFloat(sessionStorage.getItem("saldo")) || 0;
+let total = 0;
+let saldoDisplay = document.querySelector(".p_barra");
+const listTragos = document.querySelector("#lista");
+const listSeleccion = document.querySelector("#carrito");
+const pagar_btn = document.querySelector(".btn_barra1");
+let carrito = {};
 
 window.addEventListener("DOMContentLoaded", () => {
-    let saldo_usuario = sessionStorage.getItem("saldo");
-    saldoDisplay.innerHTML = saldoDisplay.innerHTML.replace("(Saldo)", saldo_usuario)
+    let nombre_usuario = sessionStorage.getItem("nombre") || "Invitado";
+    saldoDisplay.innerHTML = saldoDisplay.innerHTML
+        .replace("(Saldo)", saldo_usuario)
+        .replace("(Nombre)", nombre_usuario);
 });
 
-const listTragos = document.querySelector("#lista")
-const listSeleccion = document.querySelector("#carrito")
-
-let carrito = {}
-
 const actualizarCarrito = () => {
-    const encabezado = document.createElement("h3")
-    encabezado.textContent = "Tragos seleccionados (Carrito):"
-    
-    listSeleccion.innerHTML = ""; 
+    const encabezado = document.createElement("h3");
+    encabezado.textContent = "Tragos seleccionados (Carrito):";
+
+    listSeleccion.innerHTML = "";
     listSeleccion.appendChild(encabezado);
     listSeleccion.appendChild(btnReiniciar);
 
     let total = 0;
-    
+
     for (const [nombre, { cantidad, precio }] of Object.entries(carrito)) {
-        const item = document.createElement("p")
+        const item = document.createElement("p");
         item.textContent = `${nombre} x${cantidad} - $${precio * cantidad}`;
         listSeleccion.append(item);
         total += precio * cantidad;
     }
 
-    const totalElement = document.createElement("p")
-    totalElement.textContent = `Total: $${total}`
-    listSeleccion.append(totalElement)
+    const totalElement = document.createElement("p");
+    totalElement.textContent = `Total: $${total}`;
+    listSeleccion.append(totalElement);
 };
 
 const addSeleccion = (trago) => {
     if (carrito[trago.nombre]) {
-        carrito[trago.nombre].cantidad++
+        carrito[trago.nombre].cantidad++;
     } else {
-        carrito[trago.nombre] = { ...trago, cantidad: 1 }
+        carrito[trago.nombre] = { ...trago, cantidad: 1 };
     }
-
-    actualizarCarrito()
+    actualizarCarrito();
 };
 
 const reiniciarCarrito = () => {
-    carrito = {}
+    carrito = {};
     actualizarCarrito();
-}
+};
 
 lista.forEach((trago) => {
-    const btn = document.createElement("button")
-    btn.textContent = `${trago.nombre} - $${trago.precio}`
-    btn.className = "btn-trago"
-
-    btn.addEventListener("click", () => addSeleccion(trago))
-
-    listTragos.append(btn)
+    const btn = document.createElement("button");
+    btn.textContent = `${trago.nombre} - $${trago.precio}`;
+    btn.className = "btn-trago";
+    btn.addEventListener("click", () => addSeleccion(trago));
+    listTragos.append(btn);
 });
 
-const btnReiniciar = document.createElement("button")
-btnReiniciar.textContent = "Reiniciar Carrito"
-btnReiniciar.className = "btn-reiniciar"
+const btnReiniciar = document.createElement("button");
+btnReiniciar.textContent = "Reiniciar Carrito";
+btnReiniciar.className = "btn-reiniciar";
+btnReiniciar.addEventListener("click", reiniciarCarrito);
 
-btnReiniciar.addEventListener("click", reiniciarCarrito)
+const encabezado = document.createElement("h3");
+encabezado.textContent = "Tragos seleccionados (Carrito):";
+listSeleccion.appendChild(encabezado);
+listSeleccion.appendChild(btnReiniciar);
 
-const encabezado = document.createElement("h3")
-encabezado.textContent = "Tragos seleccionados (Carrito):"
-listSeleccion.appendChild(encabezado)
-listSeleccion.appendChild(btnReiniciar)
+pagar_btn.addEventListener("click", () => {
+    total = Object.values(carrito).reduce((acc, { cantidad, precio }) => acc + (cantidad * precio), 0);
+
+    if (total > saldo_usuario) {
+        alert("No tienes suficiente saldo para pagar.");
+        return;
+    }
+
+    saldo_usuario -= total;
+    sessionStorage.setItem("saldo", saldo_usuario);
+    alert(`Pago realizado. Nuevo saldo: $${saldo_usuario}`);
+
+    carrito = {};
+    actualizarCarrito();
+    saldoDisplay.innerHTML = `Saldo de ${sessionStorage.getItem("nombre")}: $${saldo_usuario}`;
+});

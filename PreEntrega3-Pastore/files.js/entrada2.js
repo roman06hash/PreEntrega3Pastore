@@ -33,8 +33,7 @@ formulario_edad.addEventListener("submit", (e) => {
 
 
     while(edad_cliente < 18){
-        alert("Solo los mayores de 18 años tienen premitido el ingreso, lo esperamos cuando sea mayor de edad")
-        window.location.href = "/index.html"
+        window.location.href = "./kick.html"
         break
     }
 });
